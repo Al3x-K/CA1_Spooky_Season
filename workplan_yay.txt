@@ -35,5 +35,8 @@
 - added player, background and movement script back
 	* copied things from before one by one to see what caused the crash, but didn't really work 
 - the jump does not work so gonna fix it now :)
+19.10.23
+- the jump still does not work :)
+	* Tried fixing it, still doesn't work
 
 
