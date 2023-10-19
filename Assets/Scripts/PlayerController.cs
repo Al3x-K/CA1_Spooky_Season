@@ -37,10 +37,12 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleJump();
         HandleAttack();
+        HandleDeath();
+        HandleDamage();
     }
     
 
-    
+
     //Jump Section
     private void Jump()
     {
@@ -76,12 +78,36 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Death Section
+    void Die()
+    {
+        anim.SetTrigger("Death");
+    }
+    private void HandleDeath()
+    {
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            Die();
+        }
+    }
+    //Hit Section
+    void TookDamage()
+    {
+        anim.SetTrigger("Hit");
+    }
+    private void HandleDamage()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            TookDamage();
+        }
+    }
     //Ground Section
     private void OnCollisionEnter2D(Collision2D other) 
-   {
+    {
         if(other.gameObject.CompareTag("Ground"))
         grounded = true;
-   }
+    }
 
     //Checks if the player is on the ground
     private bool CheckIfGrounded()
