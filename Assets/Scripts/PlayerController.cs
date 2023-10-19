@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     
 
     private Rigidbody2D body; 
-    private bool grounded; 
+    private Animator anim; 
+    private bool grounded = true; 
     private bool canDoubleJump = false; 
     // Start is called before the first frame update
     private void Awake()
@@ -27,18 +28,20 @@ public class PlayerMovement : MonoBehaviour
     private void InitializeComponents()
     {
         body = GetComponent<Rigidbody2D>(); 
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        
+        HandleJump();
     }
     
     
     private void Jump()
     {
-        body.velocity = new Vector2(body.velocity.x, jumpHeight);
+        anim.SetTrigger("Jump");
+        body.velocity = Vector2.up*jumpHeight; 
         grounded = false; 
     }
 
@@ -60,5 +63,11 @@ public class PlayerMovement : MonoBehaviour
             canDoubleJump = false;
         }   
     }
+
+   private void OnCollisionEnter2D(Collision2D other) 
+   {
+        if(other.gameObject.CompareTag("Ground"))
+        grounded = true;
+   }
 
 }

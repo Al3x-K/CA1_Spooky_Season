@@ -38,5 +38,7 @@
 19.10.23
 - the jump still does not work :)
 	* Tried fixing it, still doesn't work
+	* Fixed the jump with Peter's help yay - the animation was overriding the script in setting the position, not allowing player to jump 
+	* I have added an animation to the jump to distinguish it from the idle "walking" state
 
 
