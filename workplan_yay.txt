@@ -1,0 +1,39 @@
+21.09.23
+- Initial commit of the project
+28.09.23
+- downloaded all the assets from itch.io 
+- added background
+	*3 layer background (the moon, mountains and cemetery)
+- added player sprite
+	* skeleton  
+05.10.23
+- added basic player movement script
+	* I used the script that we have created in the class as a reference
+- added animation for the "walk"
+	* finaly got animation to run smoothly  
+14.10.23
+- changed movement script and sprite's animation
+	* I changed the animation to a different one but in the end I went back to the original one
+- added decorations to the background
+	* added another layer to the Grid object so it was more aesthetically pleasing 
+15.10.23
+- added camera controller script
+	* made the main camera follow the movement of the player
+- added the script that loops the background
+	* created 3D object "Quad" 
+	* created material for the background and assigned it to the Quad object
+	* removed the collider cuz I don't really need it
+	* assigned the mesh renderer to the script and set the speed 
+- created platform prefab 
+	* I deleted it like 5 minutes later, but it counts
+- changed background and commented the looping script
+	* changed background to another image with only 1 layer and added comments to the looping script 
+18.10.23
+- the project crashed, so I started a new one (yay)
+- changed concept a little 
+	* I went from kinda a platform game which objkective was to survive the swam of enemies to an endless runner (kinda)
+- added player, background and movement script back
+	* copied things from before one by one to see what caused the crash, but didn't really work 
+- the jump does not work so gonna fix it now :)
+
+
