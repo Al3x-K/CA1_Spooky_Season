@@ -40,5 +40,7 @@
 	* Tried fixing it, still doesn't work
 	* Fixed the jump with Peter's help yay - the animation was overriding the script in setting the position, not allowing player to jump 
 	* I have added an animation to the jump to distinguish it from the idle "walking" state
+- added the basic Attack function and animation for that 
+- also made transitions between animations a little bit smoother
 
 

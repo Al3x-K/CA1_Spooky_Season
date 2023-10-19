@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-[Header("Player Settings")]
+    [Header("Player Settings")]
     public float jumpHeight = 7f;
+
     
     [Header("Ground Check")]
     public LayerMask whatIsGround; 
@@ -35,20 +36,18 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleJump();
+        HandleAttack();
     }
     
+
     
+    //Jump Section
     private void Jump()
     {
         anim.SetTrigger("Jump");
         body.velocity = Vector2.up*jumpHeight; 
         grounded = false; 
     }
-
-
- 
-    
-    
 
     private void HandleJump()
     {
@@ -64,10 +63,29 @@ public class PlayerMovement : MonoBehaviour
         }   
     }
 
-   private void OnCollisionEnter2D(Collision2D other) 
+    //Attack Section
+    void Attack()
+    {
+        anim.SetTrigger("Attack");
+    }
+    private void HandleAttack()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Attack();
+        }
+    }
+
+    //Ground Section
+    private void OnCollisionEnter2D(Collision2D other) 
    {
         if(other.gameObject.CompareTag("Ground"))
         grounded = true;
    }
 
+    //Checks if the player is on the ground
+    private bool CheckIfGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround);
+    }
 }
