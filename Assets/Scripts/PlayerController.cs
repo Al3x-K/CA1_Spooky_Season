@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
-    public float jumpHeight = 7f;
+    public float jumpHeight = 20f;
+    public float speed = 5f;
+    public int health = 3;
 
     
     [Header("Ground Check")]
@@ -20,7 +22,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim; 
     private bool grounded = true; 
     private bool canDoubleJump = false; 
+     private bool facingRight = true; 
     // Start is called before the first frame update
+   
     private void Awake()
     {
         InitializeComponents();
@@ -35,17 +39,47 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandleInput();
+    }
+
+    void FixedUpdate()
+    {
+        grounded = CheckIfGrounded();
+        HandleMovement();
+    }
+
+    void HandleInput()
+    {
         HandleJump();
         HandleAttack();
         HandleDeath();
         HandleDamage();
     }
-    
 
+    //Movement Section
+    private void HandleMovement()
+    {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        anim.SetBool("Walk", horizontalInput !=0);
+
+        if((horizontalInput>0&& !facingRight)|| (horizontalInput<0 && facingRight))
+        {
+            Flip();
+        }
+    }
+
+    private void Flip() 
+    {
+        Vector3 currentScale = gameObject.transform.localScale; 
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale; 
+        facingRight = !facingRight; 
+    }
 
     //Jump Section
     private void Jump()
-    {
+    {          
         anim.SetTrigger("Jump");
         body.velocity = Vector2.up*jumpHeight; 
         grounded = false; 
