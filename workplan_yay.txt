@@ -42,5 +42,5 @@
 	* I have added an animation to the jump to distinguish it from the idle "walking" state
 - added the basic Attack function and animation for that 
 - also made transitions between animations a little bit smoother
-- added animations for the rest of states
+- added animations for the rest of states (aka taking a hit, death and reacting to something)
 
