@@ -4,7 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform target; //we're targeting the player duh
     [SerializeField] [Range(0.01f,1f)]
-    private float cameraSpeed = 0.125f;
+    private float cameraSpeed = 1f;
     [SerializeField] private Vector3 offset;
     private Vector3 velocity = Vector3.zero; 
     private void LateUpdate() //is called after all of the other updates
