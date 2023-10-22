@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour
     {          
         anim.SetTrigger("Jump");
         body.velocity = Vector2.up*jumpHeight; 
-        grounded = false; 
     }
 
     private void HandleJump()
@@ -136,13 +135,7 @@ public class PlayerController : MonoBehaviour
             TookDamage();
         }
     }
-    //Ground Section
-    private void OnCollisionEnter2D(Collision2D other) 
-    {
-        if(other.gameObject.CompareTag("Ground"))
-        grounded = true;
-    }
-
+    
     //Checks if the player is on the ground
     private bool CheckIfGrounded()
     {
