@@ -11,10 +11,18 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    //Opens the scene with settings
     public void OpenSettings()
     {
         SceneManager.LoadScene("SettingsMenu");
     }
+
+    //goes back to the main menu scene
+    public void CloseSettings()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void QuitGame()
     {
         //quits the whole thing
