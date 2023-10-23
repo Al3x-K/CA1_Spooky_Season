@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
-    public float jumpHeight = 20f;
-    public float speed = 5f;
+    public float jumpHeight = 25f;
+    public float speed = 7f;
     public int health = 3;
 
     
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         anim.SetBool("Walk", horizontalInput !=0);
-
+    
         if((horizontalInput>0&& !facingRight)|| (horizontalInput<0 && facingRight))
         {
             Flip();
