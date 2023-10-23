@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      logo-with-text-saying-spooky-season-in-a-hallowe-upscaled (3)_0: -8605908698389892120
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

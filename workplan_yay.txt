@@ -43,4 +43,8 @@
 - added the basic Attack function and animation for that 
 - also made transitions between animations a little bit smoother
 - added animations for the rest of states (aka taking a hit, death and reacting to something)
-
+20.10.23
+- I opened the project, which counts I guess
+21.10.23
+- started working on the main menu
+- actually finished the whole scene and made scripts for switching it with different ones 

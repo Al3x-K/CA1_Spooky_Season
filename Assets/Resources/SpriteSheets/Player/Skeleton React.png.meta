@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -136,7 +136,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 23
+        width: 22
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -155,9 +155,9 @@ TextureImporter:
       name: Skeleton React_1
       rect:
         serializedVersion: 2
-        x: 21
+        x: 22
         y: 0
-        width: 24
+        width: 22
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -176,9 +176,9 @@ TextureImporter:
       name: Skeleton React_2
       rect:
         serializedVersion: 2
-        x: 43
+        x: 44
         y: 0
-        width: 24
+        width: 22
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -197,9 +197,9 @@ TextureImporter:
       name: Skeleton React_3
       rect:
         serializedVersion: 2
-        x: 65
+        x: 66
         y: 0
-        width: 23
+        width: 22
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -217,14 +217,18 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7aae8b69b166c924181d0d5f02e8a265
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Skeleton React_0: -1515603127067585740
+      Skeleton React_1: -974260186754260340
+      Skeleton React_2: 6619721271862762800
+      Skeleton React_3: 436870274612170266
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
