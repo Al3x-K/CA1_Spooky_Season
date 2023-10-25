@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody2D enemyRigidBody; 
     private EnemySpawner spawner; 
+    private Animator anim;
 
    
     void Awake()
@@ -82,13 +83,17 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            PlayerController.player.TakeDamage(damage);
-            enemyHealth -= damage;
+            enemyHealth -= 1;
+            if(enemyHealth <= 0)
+            {
+                Death();
+            }
         }
     }
-    public int GetHealth()
-    {
-        return enemyHealth;
-    }
+     public void Death()
+     {
+        anim.SetTrigger("Death");
+        Destroy(gameObject);
+     }
 
 }

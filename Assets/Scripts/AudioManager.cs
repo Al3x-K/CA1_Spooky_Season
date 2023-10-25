@@ -3,10 +3,15 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance; 
-    [SerializeField] private AudioSource soundEffectSource; 
-    [SerializeField] private AudioSource backgroundMusicSource; 
+    private AudioSource soundEffectSource; 
+    private AudioSource backgroundMusicSource; 
+
+    public AudioClip jumpSound;
+    public AudioClip hitSound;
+    public AudioClip footstepSound; 
+    public AudioClip attackSound; 
+    public AudioClip backgroundMusic; 
    
-    public AudioClip [] soundsEffects;
     void Awake()
     {
         //checks if the instance of Audio Manager already exists and if yes, destroys 
@@ -21,14 +26,24 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return; 
         }
+
+        soundEffectSource = gameObject.AddComponent<AudioSource>();
+        backgroundMusicSource = gameObject.AddComponent<AudioSource>();
+
+        backgroundMusicSource.clip = backgroundMusic;
+        backgroundMusicSource.loop = true;
+        backgroundMusicSource.Play();
     
     }
   
-    public void PlaySound(AudioClip clip)
+    
+    public void PlayBackgroundMusic()
     {
-        soundEffectSource.PlayOneShot(clip);
+        if(!backgroundMusicSource.isPlaying)
+        {
+            backgroundMusicSource.Play();
+        }
     }
-
     public void changeVolume(float value)
     {
         AudioListener.volume = value;
@@ -43,5 +58,22 @@ public class AudioManager : MonoBehaviour
     {
         backgroundMusicSource.mute = !backgroundMusicSource.mute;
     }
-    
+
+
+    public void PlayJumpSound()
+    {
+        soundEffectSource.PlayOneShot(jumpSound);
+    }
+    public void PlayHitSound()
+    {
+        soundEffectSource.PlayOneShot(hitSound);
+    }
+    public void PlayFootstepSound()
+    {
+        soundEffectSource.PlayOneShot(footstepSound);
+    }
+    public void PlayAttackSound()
+    {
+        soundEffectSource.PlayOneShot(attackSound);
+    }
 }

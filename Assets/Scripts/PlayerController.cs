@@ -21,15 +21,11 @@ public class PlayerController : MonoBehaviour
     
     
     [Header("Attack")]
-    [SerializeField] private float attackDamage = 1;
+    [SerializeField] private int attackDamage;
     [SerializeField] private float attackRange = 3f;
 
 
-    //clips for audio
-    public AudioClip jumpSound;
-    public AudioClip hitSound;
-    public AudioClip footstepSound; 
-    public AudioClip attackSound; 
+    
 
     public LayerMask enemyLayers;  
     private Rigidbody2D body; 
@@ -75,11 +71,14 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         anim.SetBool("Walk", horizontalInput !=0);
-        AudioManager.instance.PlaySound(footstepSound);
     
         if((horizontalInput>0&& !facingRight)|| (horizontalInput<0 && facingRight))
         {
             Flip();
+        }
+        if(horizontalInput != 0 && grounded)
+        {
+            AudioManager.instance.PlayFootstepSound();;
         }
     }
 
@@ -96,7 +95,7 @@ public class PlayerController : MonoBehaviour
     {          
         anim.SetTrigger("Jump");
         body.velocity = Vector2.up*jumpHeight; 
-        AudioManager.instance.PlaySound(jumpSound);
+        AudioManager.instance.PlayJumpSound();
     }
 
     private void HandleJump()
@@ -114,7 +113,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Attack Section
-    void Attack()
+    void Attack(int attackDamage)
     {
         anim.SetTrigger("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayers);
@@ -123,9 +122,8 @@ public class PlayerController : MonoBehaviour
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
             if (enemyController != null)
             {
-             
                 Debug.Log("Enemy Damaged!");
-                AudioManager.instance.PlaySound(attackSound);
+                AudioManager.instance.PlayAttackSound();
             }
 
         }
@@ -134,7 +132,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Attack();
+            Attack(attackDamage);
         }
     }
 
@@ -157,18 +155,18 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
-        AudioManager.instance.PlaySound(hitSound);
         if(health <= 0)
         {
             Destroy(gameObject);
         }
+        AudioManager.instance.PlayHitSound();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Enemy")
         {
-            EnemyController.enemy.GetHealth();
+            Attack(attackDamage);
         }
     }
     

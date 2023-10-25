@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6440488906399797444}
   m_Layer: 6
   m_Name: Executioner
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,8 +165,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   damage: 1
-  enemyHealth: 5
-  enemyMaxHealth: 5
+  enemyHealth: 1
+  enemyMaxHealth: 1
 --- !u!50 &6440488906399797444
 Rigidbody2D:
   serializedVersion: 4
