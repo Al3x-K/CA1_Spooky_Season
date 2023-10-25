@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+
+    private EnemySpawner spawner; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +18,10 @@ public class EnemyController : MonoBehaviour
     {
         
     }
+
+    public void Initialize(EnemySpawner spawnerReference)
+    {
+        spawner = spawnerReference;
+    }
+
 }

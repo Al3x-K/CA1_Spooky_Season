@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
     public float jumpHeight = 25f;
-    public float speed = 7f;
+    public float speed = 20f;
     public int health = 3;
 
     
@@ -60,17 +60,7 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            speed = 15f;
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-        }
-        else
-        {
-            speed = 7f;
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-        }
-        
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         anim.SetBool("Walk", horizontalInput !=0);
     
         if((horizontalInput>0&& !facingRight)|| (horizontalInput<0 && facingRight))
@@ -115,7 +105,7 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleAttack()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetMouseButtonDown(0))
         {
             Attack();
         }
