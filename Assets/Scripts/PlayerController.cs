@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     [Header("Player Settings")]
     public float jumpHeight = 25f;
     public float speed = 20f;
-    [SerializeField] private int health;
-    [SerializeField] private int maxHealth = 10;
+    [SerializeField] public int health;
+    [SerializeField] public int maxHealth = 10;
 
     
     [Header("Ground Check")]
@@ -25,8 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackRange = 3f;
 
 
-    
-
+    public HealthDisplay healthDisplay;
     public LayerMask enemyLayers;  
     private Rigidbody2D body; 
     private Animator anim; 
@@ -124,6 +123,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Enemy Damaged!");
                 AudioManager.instance.PlayAttackSound();
+                health += 1;
             }
 
         }
@@ -136,20 +136,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Death Section
-    public void Die()
-    {
-        anim.SetTrigger("Death");
-        Destroy(gameObject);
-        GameManager.instance.GameOver();
-    }
-    private void HandleDeath()
-    {
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            Die();
-        }
-    }
     //Damage Section
 
     public void TakeDamage(int amount)
@@ -158,6 +144,7 @@ public class PlayerController : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            GameManager.instance.GameOver();
         }
         AudioManager.instance.PlayHitSound();
     }
@@ -166,7 +153,8 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            Attack(attackDamage);
+            HandleAttack();
+            TakeDamage(1);
         }
     }
     

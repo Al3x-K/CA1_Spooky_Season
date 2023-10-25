@@ -32,7 +32,6 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
         Move();
     }
 
@@ -86,14 +85,9 @@ public class EnemyController : MonoBehaviour
             enemyHealth -= 1;
             if(enemyHealth <= 0)
             {
-                Death();
+                Destroy(gameObject);
             }
         }
     }
-     public void Death()
-     {
-        anim.SetTrigger("Death");
-        Destroy(gameObject);
-     }
-
+     
 }

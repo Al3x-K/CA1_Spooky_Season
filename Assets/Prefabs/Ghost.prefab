@@ -170,8 +170,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   damage: 1
-  enemyHealth: 1
-  enemyMaxHealth: 1
+  enemyHealth: 3
+  enemyMaxHealth: 3
 --- !u!95 &451102418836921606
 Animator:
   serializedVersion: 7

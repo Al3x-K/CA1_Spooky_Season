@@ -165,8 +165,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   damage: 1
-  enemyHealth: 1
-  enemyMaxHealth: 1
+  enemyHealth: 5
+  enemyMaxHealth: 5
 --- !u!50 &6440488906399797444
 Rigidbody2D:
   serializedVersion: 4
