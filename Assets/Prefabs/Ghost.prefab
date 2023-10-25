@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4097295276690168927
+--- !u!1 &5082854818114535289
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5257095326690541392}
-  - component: {fileID: 8573975792556304449}
-  - component: {fileID: 7551259345498821335}
-  - component: {fileID: 8303177295957680202}
-  - component: {fileID: 7610340810254468845}
-  - component: {fileID: 6411699130235792893}
-  m_Layer: 0
+  - component: {fileID: 907334870263692876}
+  - component: {fileID: 5872019109031496472}
+  - component: {fileID: 10406381421608413}
+  - component: {fileID: 9207239530572208850}
+  - component: {fileID: 1814692640815891824}
+  - component: {fileID: 451102418836921606}
+  m_Layer: 6
   m_Name: Ghost
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5257095326690541392
+--- !u!4 &907334870263692876
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097295276690168927}
+  m_GameObject: {fileID: 5082854818114535289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.48, y: 0, z: 0}
+  m_LocalPosition: {x: 4.55, y: -52.14, z: 0}
   m_LocalScale: {x: 12.85334, y: 12.85334, z: 12.85334}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &8573975792556304449
+--- !u!50 &5872019109031496472
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097295276690168927}
+  m_GameObject: {fileID: 5082854818114535289}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,13 +63,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &7551259345498821335
+--- !u!70 &10406381421608413
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097295276690168927}
+  m_GameObject: {fileID: 5082854818114535289}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -100,13 +100,13 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0013318697, y: 0.005719898}
   m_Size: {x: 0.23628856, y: 0.43074265}
   m_Direction: 0
---- !u!212 &8303177295957680202
+--- !u!212 &9207239530572208850
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097295276690168927}
+  m_GameObject: {fileID: 5082854818114535289}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -152,35 +152,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7610340810254468845
+--- !u!114 &1814692640815891824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097295276690168927}
+  m_GameObject: {fileID: 5082854818114535289}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a0d996da3e81774e80cfffcb3753499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  distance: 9
-  distanceBetween: 10
+  groundCheckDistance: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  groundCheckDistance: 2
-  maxHealth: 2
-  player: {fileID: 0}
---- !u!95 &6411699130235792893
+  damage: 1
+  enemyHealth: 2
+  enemyMaxHealth: 2
+--- !u!95 &451102418836921606
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097295276690168927}
+  m_GameObject: {fileID: 5082854818114535289}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a93fe7a513db2e844acba87f5318db3d, type: 2}

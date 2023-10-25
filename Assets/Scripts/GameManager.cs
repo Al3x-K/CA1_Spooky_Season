@@ -25,12 +25,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return; 
         } 
+        pauseMenu.SetActive(false);
     }
 
     
     void Update()
     {
-        pauseMenu.SetActive(false);
+        
         if(Input.GetKeyDown(KeyCode.P))
         {
             if(isPaused)

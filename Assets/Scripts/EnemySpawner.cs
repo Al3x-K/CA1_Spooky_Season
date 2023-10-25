@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    [SerializeField] private GameObject enemyPrefab; 
+    [SerializeField] private GameObject enemy; 
     [SerializeField] public float spawnRate = 2f;
-    [SerializeField] public Transform[] spawnPoints;
+    [SerializeField] public Transform spawnPoint;
 
     [Header("Limit Settings")]
     [SerializeField] private int maxEnemies = 3; 
@@ -21,8 +21,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         if(currentEnemies >= maxEnemies) return; 
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        GameObject spawnedEnemy = Instantiate(enemy, spawnPoint.position, Quaternion.identity);
     
         EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
         enemyController.Initialize(this);

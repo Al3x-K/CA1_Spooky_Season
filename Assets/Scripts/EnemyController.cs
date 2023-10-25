@@ -4,30 +4,28 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public static EnemyController enemy;
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float groundCheckDistance = 2f;
     [SerializeField] private LayerMask whatIsGround;
     private bool movingRight = true; 
     private bool canChangeDirection = true;
-    public float distance = 9f;
-    public float distanceBetween = 10f;
     
 
     [Header("Combat Settings")]
-    [SerializeField] public int maxHealth = 5; 
-    private int currentHealth; 
+    public int damage;
+    [SerializeField] private int enemyHealth;
+    [SerializeField] private int enemyMaxHealth = 5;
 
-
-    public GameObject player;
     private Rigidbody2D enemyRigidBody; 
     private EnemySpawner spawner; 
 
-    // Start is called before the first frame update
+   
     void Awake()
     {
         enemyRigidBody = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth; 
+        enemyHealth = enemyMaxHealth;
     }
 
     // Update is called once per frame
@@ -52,8 +50,8 @@ public class EnemyController : MonoBehaviour
         }
     
         enemyRigidBody.velocity = movingRight ?
-            new Vector2(moveSpeed + 15f, enemyRigidBody.velocity.y) :
-            new Vector2(-moveSpeed - 15f, enemyRigidBody.velocity.y);
+            new Vector2(moveSpeed + 10f, enemyRigidBody.velocity.y) :
+            new Vector2(-moveSpeed - 10f, enemyRigidBody.velocity.y);
     }
 
     IEnumerator DelayDirectionChange()
@@ -63,19 +61,34 @@ public class EnemyController : MonoBehaviour
         canChangeDirection = true;
     }
 
-    public void Chase()
-    {
-        distance = Vector2.Distance(transform.position,player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-
-        if(distance < distanceBetween)
-        {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-        }
-    }
 
     public void Initialize(EnemySpawner spawnerReference)
     {
         spawner = spawnerReference;
     }
+
+
+    public void Die()
+    {
+        if (spawner != null)
+        {
+            spawner.EnemyDied();
+        }
+        Destroy(gameObject);
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            PlayerController.player.TakeDamage(damage);
+            enemyHealth -= damage;
+        }
+    }
+    public int GetHealth()
+    {
+        return enemyHealth;
+    }
+
 }

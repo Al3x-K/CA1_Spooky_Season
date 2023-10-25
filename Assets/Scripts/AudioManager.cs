@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource soundEffectSource; 
     [SerializeField] private AudioSource backgroundMusicSource; 
    
-
+    public AudioClip [] soundsEffects;
     void Awake()
     {
         //checks if the instance of Audio Manager already exists and if yes, destroys 
@@ -43,4 +43,5 @@ public class AudioManager : MonoBehaviour
     {
         backgroundMusicSource.mute = !backgroundMusicSource.mute;
     }
+    
 }

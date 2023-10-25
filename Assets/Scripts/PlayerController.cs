@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController player;
+
     [Header("Player Settings")]
     public float jumpHeight = 25f;
     public float speed = 20f;
-    public int health = 3;
+    [SerializeField] private int health;
+    [SerializeField] private int maxHealth = 10;
 
     
     [Header("Ground Check")]
@@ -17,17 +20,29 @@ public class PlayerController : MonoBehaviour
 
     
     
+    [Header("Attack")]
+    [SerializeField] private float attackDamage = 1;
+    [SerializeField] private float attackRange = 3f;
 
+
+    //clips for audio
+    public AudioClip jumpSound;
+    public AudioClip hitSound;
+    public AudioClip footstepSound; 
+    public AudioClip attackSound; 
+
+    public LayerMask enemyLayers;  
     private Rigidbody2D body; 
     private Animator anim; 
     private bool grounded = true; 
     private bool canDoubleJump = false; 
-     private bool facingRight = true; 
+    private bool facingRight = true; 
     // Start is called before the first frame update
    
     private void Awake()
     {
         InitializeComponents();
+        health = maxHealth;
     }
 
     private void InitializeComponents()
@@ -52,8 +67,6 @@ public class PlayerController : MonoBehaviour
     {
         HandleJump();
         HandleAttack();
-        HandleDeath();
-        HandleDamage();
     }
 
     //Movement Section
@@ -62,6 +75,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         anim.SetBool("Walk", horizontalInput !=0);
+        AudioManager.instance.PlaySound(footstepSound);
     
         if((horizontalInput>0&& !facingRight)|| (horizontalInput<0 && facingRight))
         {
@@ -82,6 +96,7 @@ public class PlayerController : MonoBehaviour
     {          
         anim.SetTrigger("Jump");
         body.velocity = Vector2.up*jumpHeight; 
+        AudioManager.instance.PlaySound(jumpSound);
     }
 
     private void HandleJump()
@@ -102,6 +117,18 @@ public class PlayerController : MonoBehaviour
     void Attack()
     {
         anim.SetTrigger("Attack");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+            if (enemyController != null)
+            {
+             
+                Debug.Log("Enemy Damaged!");
+                AudioManager.instance.PlaySound(attackSound);
+            }
+
+        }
     }
     private void HandleAttack()
     {
@@ -112,9 +139,11 @@ public class PlayerController : MonoBehaviour
     }
 
     //Death Section
-    void Die()
+    public void Die()
     {
         anim.SetTrigger("Death");
+        Destroy(gameObject);
+        GameManager.instance.GameOver();
     }
     private void HandleDeath()
     {
@@ -123,18 +152,26 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
-    //Hit Section
-    void TookDamage()
+    //Damage Section
+
+    public void TakeDamage(int amount)
     {
-        anim.SetTrigger("Hit");
-    }
-    private void HandleDamage()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
+        health -= amount;
+        AudioManager.instance.PlaySound(hitSound);
+        if(health <= 0)
         {
-            TookDamage();
+            Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            EnemyController.enemy.GetHealth();
+        }
+    }
+    
     
     //Checks if the player is on the ground
     private bool CheckIfGrounded()
