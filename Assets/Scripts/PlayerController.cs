@@ -60,7 +60,17 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            speed = 15f;
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        }
+        else
+        {
+            speed = 7f;
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        }
+        
         anim.SetBool("Walk", horizontalInput !=0);
     
         if((horizontalInput>0&& !facingRight)|| (horizontalInput<0 && facingRight))

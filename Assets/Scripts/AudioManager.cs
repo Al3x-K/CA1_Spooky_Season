@@ -33,4 +33,14 @@ public class AudioManager : MonoBehaviour
     {
         AudioListener.volume = value;
     }
+
+    public void ToggleEffects()
+    {
+        soundEffectSource.mute = !soundEffectSource.mute;
+    }
+
+    public void ToggleMusic()
+    {
+        backgroundMusicSource.mute = !backgroundMusicSource.mute;
+    }
 }

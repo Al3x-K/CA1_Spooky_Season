@@ -1091,7 +1091,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0fffc02d964e17045b3538964cc082a5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.11
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2354,6 +2354,7 @@ GameObject:
   - component: {fileID: 1342032959}
   - component: {fileID: 1342032958}
   - component: {fileID: 1342032957}
+  - component: {fileID: 1342032960}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -2427,9 +2428,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1971826332}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlayBackgroundMusic
+      - m_Target: {fileID: 1342032960}
+        m_TargetAssemblyTypeName: ToggleAudio, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2477,6 +2478,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342032955}
   m_CullTransparentMesh: 1
+--- !u!114 &1342032960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342032955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2398a20ecbf263c49a3d5f18528ad99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleMusic: 1
+  toggleEffects: 0
 --- !u!1 &1392311947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,6 +2580,7 @@ GameObject:
   - component: {fileID: 1422520588}
   - component: {fileID: 1422520587}
   - component: {fileID: 1422520586}
+  - component: {fileID: 1422520589}
   m_Layer: 5
   m_Name: SoundEffects
   m_TagString: Untagged
@@ -2637,7 +2653,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1422520587}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1422520589}
+        m_TargetAssemblyTypeName: ToggleAudio, Assembly-CSharp
+        m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1422520587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2676,6 +2704,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422520584}
   m_CullTransparentMesh: 1
+--- !u!114 &1422520589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422520584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2398a20ecbf263c49a3d5f18528ad99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleMusic: 0
+  toggleEffects: 1
 --- !u!1 &1466568163
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,7 +2978,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.112
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
