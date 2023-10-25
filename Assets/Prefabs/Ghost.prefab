@@ -30,11 +30,11 @@ Transform:
   m_GameObject: {fileID: 4097295276690168927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.48, y: 0, z: 0}
-  m_LocalScale: {x: 8.163443, y: 8.163443, z: 8.163443}
+  m_LocalScale: {x: 12.85334, y: 12.85334, z: 12.85334}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8573975792556304449
 Rigidbody2D:
@@ -164,6 +164,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0d996da3e81774e80cfffcb3753499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 3
+  distance: 9
+  distanceBetween: 10
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheckDistance: 2
+  maxHealth: 2
+  player: {fileID: 0}
 --- !u!95 &6411699130235792893
 Animator:
   serializedVersion: 7
