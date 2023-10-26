@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Made with the help of a tutorial from "Root Games" channel on youtube under the name of "Unity 2D: Scrolling Background"
+//Made with the help of a tutorial from "Root Games" channel on youtube https://youtu.be/Wz3nbQPYwss?si=GLtOMo0-rFcrPXAY
 public class LoopingBackground : MonoBehaviour
 {
     // Start is called before the first frame update
