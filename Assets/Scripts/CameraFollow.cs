@@ -1,5 +1,5 @@
 using UnityEngine;
-//as a reference a yt tutorial was used (Camera Follow)
+//as a reference a yt tutorial was used (https://youtu.be/FXqwunFQuao?si=QB7lZkD-olStbCZq)
 //this script is attached to the main camera
 //it allows the camera to follow the player and their path with slight delay
 //for it to work you have to assign a target which is a player GameObject
