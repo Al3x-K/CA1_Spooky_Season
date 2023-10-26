@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//the script was taken from Naoise's class, wit most changes made in unity editor
+//changes made:
+//1. I changed the speed with which the enemies are moving around
+//2. made an enemy take damage on collision if that was a player
 public class EnemyController : MonoBehaviour
 {
     public static EnemyController enemy;
@@ -37,23 +41,25 @@ public class EnemyController : MonoBehaviour
 
     public void Move()
     {
-        Vector2 groundCheckPosition = movingRight ?
+        Vector2 groundCheckPosition = movingRight ? //alternative to an if...else statement 
             new Vector2(transform.position.x + 0.5f, transform.position.y) :
             new Vector2(transform.position.x - 0.5f, transform.position.y);
 
         bool isGrounded = Physics2D.Raycast(groundCheckPosition, Vector2.down, groundCheckDistance, whatIsGround);
 
-        if (!isGrounded && canChangeDirection)
+        if (!isGrounded && canChangeDirection) 
         {
             movingRight = !movingRight;
             StartCoroutine(DelayDirectionChange());
         }
     
+        //sets velocity for movement
         enemyRigidBody.velocity = movingRight ?
             new Vector2(moveSpeed + 10f, enemyRigidBody.velocity.y) :
             new Vector2(-moveSpeed - 10f, enemyRigidBody.velocity.y);
     }
 
+    //make an enemy have a slight delay before they move the other way 
     IEnumerator DelayDirectionChange()
     {
         canChangeDirection = false;
@@ -62,6 +68,7 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    //access the spawner
     public void Initialize(EnemySpawner spawnerReference)
     {
         spawner = spawnerReference;
@@ -82,10 +89,10 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            enemyHealth -= 1;
+            enemyHealth -= 1; //decreases enemy health on collision if the object was tagged as "Player"
             if(enemyHealth <= 0)
             {
-                Destroy(gameObject);
+                Destroy(gameObject); //destroys the object if the health got to 0
             }
         }
     }

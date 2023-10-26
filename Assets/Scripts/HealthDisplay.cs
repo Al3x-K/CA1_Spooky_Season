@@ -8,25 +8,25 @@ public class HealthDisplay : MonoBehaviour
     public PlayerController playerController;
     public int health;
     public int maxHealth;
-    public Sprite heart;
+    public Sprite heart; 
     public Sprite emptyHeart;
-    public Image[] healthBar;
+    public Image[] healthBar; //creates an array with heart images
    
     void Update()
     {
-        health = playerController.health;
-        maxHealth = playerController.maxHealth;
-        for (int i = 0; i < healthBar.Length; i++)
+        health = playerController.health; //gets player's health
+        maxHealth = playerController.maxHealth;//gets player's maxhealth
+        for (int i = 0; i < healthBar.Length; i++) //goes through an array of heart images
         {
-            if(i < health)
+            if(i < health) //checks if i is less than current health
             {
-                healthBar[i].sprite = heart;
+                healthBar[i].sprite = heart; //shows the full heart
             }
-            else
+            else //if the i is bigger than health
             {
-                healthBar[i].sprite = emptyHeart;
+                healthBar[i].sprite = emptyHeart; //shows empty heart
             }
-            if(i < maxHealth)
+            if(i < maxHealth) //checks if the max health wasn't exceeded
             {
                 healthBar[i].enabled = true;
             }
