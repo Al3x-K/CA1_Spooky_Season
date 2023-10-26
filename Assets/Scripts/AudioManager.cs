@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip footstepSound; 
     public AudioClip attackSound; 
     public AudioClip backgroundMusic; 
+    public AudioClip clickSound;
    
     void Awake()
     {
@@ -75,5 +76,10 @@ public class AudioManager : MonoBehaviour
     public void PlayAttackSound()
     {
         soundEffectSource.PlayOneShot(attackSound);
+    }
+
+    public void PlayClickSound()
+    {
+        soundEffectSource.PlayOneShot(clickSound);
     }
 }

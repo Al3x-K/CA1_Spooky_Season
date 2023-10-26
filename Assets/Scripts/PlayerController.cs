@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 20f;
     [SerializeField] public int health;
     [SerializeField] public int maxHealth = 10;
+    public int numOfCoins;
 
     
     [Header("Ground Check")]
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
+        Debug.Log(numOfCoins);
     }
 
     void FixedUpdate()

@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+
     [Header("Game States")]
     public bool isPaused;
     public bool isGameOver;
     public GameObject pauseMenu;
+    public GameObject healthBar;
     
        void Awake()
     {
@@ -55,18 +57,21 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true); //it activates the panel with pause menu
+        healthBar.SetActive(false);//hides the hearts
         Time.timeScale = 0f; //freezes the time
         isPaused = true; //sets the boolean to true cuz the game is paused
     }
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        healthBar.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
     }
     public void GameOver()
     {
         isGameOver=true;
+        SceneManager.LoadScene("GameOver");
         
     }
     public void RestartGame()
