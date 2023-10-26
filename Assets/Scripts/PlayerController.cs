@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 20f;
     [SerializeField] public int health;
     [SerializeField] public int maxHealth = 10;
-    public int numOfCoins;
 
     
     [Header("Ground Check")]
@@ -39,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         InitializeComponents();
         health = maxHealth;
+        
     }
 
     private void InitializeComponents()
@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
-        Debug.Log(numOfCoins);
     }
 
     void FixedUpdate()
@@ -157,6 +156,15 @@ public class PlayerController : MonoBehaviour
         {
             HandleAttack();
             TakeDamage(1);
+        }
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Door")
+        {
+            GameManager.instance.WinGame();
         }
     }
     

@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     }
 
     //goes back to the main menu scene
-    public void CloseSettings()
+    public void GoBack()
     {
         SceneManager.LoadScene("MainMenu");
     }

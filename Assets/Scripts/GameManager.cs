@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     
        void Awake()
     {
+        pauseMenu.SetActive(false);
         if(instance == null)
         {
             instance = this;
@@ -27,13 +28,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return; 
         } 
-        pauseMenu.SetActive(false);
+        
     }
 
     
     void Update()
     {
-        
         if(Input.GetKeyDown(KeyCode.P))
         {
             if(isPaused)
@@ -82,5 +82,10 @@ public class GameManager : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void WinGame()
+    {
+        SceneManager.LoadScene("WinGame");
     }
 }
